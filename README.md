@@ -16,7 +16,7 @@ sudo docker exec -ti \`sudo docker ps | grep clusterdock | grep secondary | head
 
 ## Google Cloud Engine usage
 
-Should you wish to start a sandbox environment onto GCE please take note of the resource requirements. With the default services enabled by clusterdock, the minimum machine instance is n1-standard-4 (which comes with 15 GB RAM) - anything with less ram will not succcessfully create the cluster
+Should you wish to start a sandbox environment onto GCE please take note of the resource requirements. With the default services enabled by clusterdock, the minimum machine instance is n1-standard-4 (which comes with 15 GB RAM) - anything with less RAM will not succcessfully create the cluster
 
 The command can be something like this (change zone and/or add --project as required; change instance name as you wish)
 
@@ -31,4 +31,4 @@ once the machine started simply do
 (the first step described above, to setup the cluster)
 followed by 
 
-gcloud compute ssh cdock --zone us-east4-a --command "sudo docker exec -ti \`sudo docker ps | grep clusterdock | grep secondary | head -1 | awk '{print $1}'\` bash -c \\"wget -qO- https://raw.githubusercontent.com/academyofdata/clusterdock/master/get2hdfs.sh | bash -s\\""
+gcloud compute ssh cdock --zone us-east4-a --command "wget -O- https://raw.githubusercontent.com/academyofdata/clusterdock/master/getindocker.sh | bash -s"

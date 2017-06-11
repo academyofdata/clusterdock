@@ -31,4 +31,4 @@ once the machine started simply do
 (the first step described above, to setup the cluster)
 followed by 
 
-gcloud compute ssh cdock --zone us-east4-a --command "wget -O- https://raw.githubusercontent.com/academyofdata/clusterdock/master/getindocker.sh | bash -s"
+`gcloud compute ssh cdock --zone us-east4-a --command "wget -O- https://raw.githubusercontent.com/academyofdata/clusterdock/master/getindocker.sh | bash -s"`

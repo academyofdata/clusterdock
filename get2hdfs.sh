@@ -6,3 +6,13 @@ mkdir /tmp/data
 cd /tmp/data
 #run the script that will download all the csv files
 wget -qO- https://raw.githubusercontent.com/academyofdata/clusterdock/master/getrawdata.sh | bash -s
+#if everything went fine we should have some csv files in /tmp/data, put them onto hdfs
+#first do a little setup - create a few directories and give everyone in HDFS unrestricted access
+HADOOP_USER_NAME=hdfs hdfs dfs -mkdir /data
+HADOOP_USER_NAME=hdfs hdfs dfs -chmod a+w /data
+HADOOP_USER_NAME=hdfs hdfs dfs -mkdir /metadata
+HADOOP_USER_NAME=hdfs hdfs dfs -chmod a+w /metadata
+HADOOP_USER_NAME=hdfs hdfs dfs -mkdir /input
+HADOOP_USER_NAME=hdfs hdfs dfs -chmod a+w /input
+#now put the files in there
+HADOOP_USER_NAME=hdfs hdfs dfs -put /tmp/data/*csv /input

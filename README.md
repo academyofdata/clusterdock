@@ -1,6 +1,7 @@
 # clusterdock
 
 To setup a cluster based on clusterdock on a 'fresh' system, simply do
+
 `wget -qO- https://raw.githubusercontent.com/academyofdata/clusterdock/master/script.sh|
  bash -s`
 

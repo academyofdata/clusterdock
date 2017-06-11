@@ -2,7 +2,7 @@
 
 To setup a cluster based on clusterdock on a 'fresh' system, simply do
 
-`wget -qO- https://raw.githubusercontent.com/academyofdata/clusterdock/master/script.sh|
+`wget -qO- https://raw.githubusercontent.com/academyofdata/clusterdock/master/cluster_setup.sh|
  bash -s`
 
 once the docker cluster is running (there should be two nodes started with the default startup options) issue the following command to download all the files required and put them onto HDFS
@@ -25,7 +25,7 @@ ud/global/images/family/ubuntu-1604-lts" --boot-disk-size "50" --boot-disk-type 
 
 once the machine started simply do 
 
-`gcloud compute ssh cdock --command "wget -qO- https://raw.githubusercontent.com/academyofdata/clusterdock/master/script.sh|
+`gcloud compute ssh cdock --command "wget -qO- https://raw.githubusercontent.com/academyofdata/clusterdock/master/cluster_setup.sh|
  bash -s"`
  
 (the first step described above, to setup the cluster)

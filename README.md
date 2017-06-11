@@ -29,6 +29,6 @@ once the machine started simply do
  bash -s"`
  
 (the first step described above, to setup the cluster)
-followed by
+followed by 
 
-gcloud compute ssh cdock --command "sudo docker exec -ti \`sudo docker ps | grep clusterdock | grep secondary | head -1 | awk '{print $1}'\` bash -c \"wget -qO- https://raw.githubusercontent.com/academyofdata/clusterdock/master/get2hdfs.sh | bash -s\""
+gcloud compute ssh cdock --command "sudo docker exec -ti \`sudo docker ps | grep clusterdock | grep secondary | head -1 | awk '{print $1}'\` bash -c \\"wget -qO- https://raw.githubusercontent.com/academyofdata/clusterdock/master/get2hdfs.sh | bash -s\\""

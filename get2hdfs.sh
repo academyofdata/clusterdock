@@ -1,5 +1,5 @@
-#for some reason not always the name resolution is good in these containers, so add the google DNS just in case
-echo "nameserver 8.8.8.8" >> /etc/resolv.conf
+#for some reason not always the name resolution is good in these containers, so add the google DNS before running this, just in case
+#echo "nameserver 8.8.8.8" >> /etc/resolv.conf
 #make a temporary directory to store the downloaded csv files
 mkdir /tmp/data
 #go there

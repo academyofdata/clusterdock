@@ -25,10 +25,10 @@ ud/global/images/family/ubuntu-1604-lts" --boot-disk-size "50" --boot-disk-type 
 
 once the machine started simply do 
 
-`gcloud compute ssh cdock --command "wget -qO- https://raw.githubusercontent.com/academyofdata/clusterdock/master/cluster_setup.sh|
+`gcloud compute ssh cdock --zone us-east4-a --command "wget -qO- https://raw.githubusercontent.com/academyofdata/clusterdock/master/cluster_setup.sh|
  bash -s"`
  
 (the first step described above, to setup the cluster)
 followed by 
 
-gcloud compute ssh cdock --command "sudo docker exec -ti \`sudo docker ps | grep clusterdock | grep secondary | head -1 | awk '{print $1}'\` bash -c \\"wget -qO- https://raw.githubusercontent.com/academyofdata/clusterdock/master/get2hdfs.sh | bash -s\\""
+gcloud compute ssh cdock --zone us-east4-a --command "sudo docker exec -ti \`sudo docker ps | grep clusterdock | grep secondary | head -1 | awk '{print $1}'\` bash -c \\"wget -qO- https://raw.githubusercontent.com/academyofdata/clusterdock/master/get2hdfs.sh | bash -s\\""

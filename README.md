@@ -20,8 +20,8 @@ Should you wish to start a sandbox environment onto GCE please take note of the 
 
 The command can be something like this (change zone and/or add --project as required; change instance name as you wish)
 
-gcloud compute instances create cdock --zone us-east4-a --machine-type n1-standard-4 --maintenance-policy "MIGRATE" --image "https://www.googleapis.com/compute/v1/projects/ubuntu-os-clo
-ud/global/images/family/ubuntu-1604-lts" --boot-disk-size "50" --boot-disk-type "pd-standard" --boot-disk-device-name "cdockdisk1"
+`gcloud compute instances create cdock --zone us-east4-a --machine-type n1-standard-4 --maintenance-policy "MIGRATE" --image "https://www.googleapis.com/compute/v1/projects/ubuntu-os-clo
+ud/global/images/family/ubuntu-1604-lts" --boot-disk-size "50" --boot-disk-type "pd-standard" --boot-disk-device-name "cdockdisk1"`
 
 once the machine started simply do 
 

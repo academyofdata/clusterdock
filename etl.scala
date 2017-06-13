@@ -7,7 +7,7 @@ val users = sqlContext.read.format("com.databricks.spark.csv").option("header", 
 ratings.saveAsParquetFile("/data/1m/ratings.parquet")
 movies.saveAsParquetFile("/data/1m/movies.parquet")
 users.saveAsParquetFile("/data/1m/users.parquet")
-
+//valid values for compression codec: snappy, deflate, uncompressed
 sqlContext.setConf("spark.sql.avro.compression.codec", "snappy")
 sqlContext.setConf("spark.sql.avro.deflate.level", "5")
 

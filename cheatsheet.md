@@ -1,4 +1,4 @@
-####Hadoop Cheatsheet
+### Hadoop Cheatsheet
  
 When using clusterdock containers, to log in to the container (assuming the container is called ‘small_morse’)
 docker exec -it small_morse bash
@@ -39,7 +39,7 @@ To save it in Avro format
 df.write.format("com.databricks.spark.avro").save("/tmp/ratings.avro")
  
  
-**Hive**
+## Hive
  
 One can load a csv file in HDFS and then create a hive table that maps onto that file using the following sequence
  

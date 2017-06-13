@@ -7,6 +7,7 @@ When using clusterdock containers, to log in to the container (assuming the cont
 Run one of the hadoop commands (‘put’ here) e.g.
 
 `HADOOP_USER_NAME=hdfs hdfs fs -put /tmp/movies.csv /user/spark/`
+
 (hdfs is the new name of hadoop command, but hadoop can still be used, e.g.
 
 `HADOOP_USER_NAME=hdfs hadoop fs -put /tmp/movies.csv /user/spark/)`
@@ -22,6 +23,7 @@ Start spark-shell
 Note: If all the HDFS commands are to be run as the same user then one can simply do
 
 `export HADOOP_USER_NAME=<hdfsusername>`
+
 once per session (or at login through .bash_profile or /etc/profile or similar)
  
 Start spark-shell with databricks spark-csv jars (csv support is built in only in spark 2.0+, clusterdock uses - as of jun 2017 - spark 1.6)

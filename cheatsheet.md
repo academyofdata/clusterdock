@@ -66,6 +66,8 @@ We’ve now set-up the HDFS part, let’s move to Hive console
 Once here we simply do
  
 `CREATE EXTERNAL TABLE movies (mid INT, title String, genres STRING, year INT) COMMENT 'loaded from csv file' ROW FORMAT DELIMITED FIELDS TERMINATED BY '\054' STORED AS TEXTFILE LOCATION '/tmp/movies';`
+
+We have, so far, loaded the CSV file into a Hive table (more accurately - we've linked the table to the CSV file). Let's now save the data from the CSV into another table in Parquet format
  
 `INSERT OVERWRITE DIRECTORY '/data/movies'
 STORED AS PARQUET 
@@ -74,6 +76,7 @@ select * from movies;`
 Or 
  
 `LOAD DATA INPATH '/input/movies.csv' into table movies_1;`
+
 (this ends up moving the data file to the default hive directory, usually /user/hive/warehouse)
  
 Loading the data using the method above works in most of the cases, except when the fields have commas and therefore have to use quotes - like here, where the genres field is stored as e.g. “{Animation, Comedy}”. For these cases we’ll need a different approach - using a SerDe from OpenCSV, thus the table creation becomes

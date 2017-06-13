@@ -1,20 +1,26 @@
 ### Hadoop Cheatsheet
  
 When using clusterdock containers, to log in to the container (assuming the container is called ‘small_morse’)
+
 `docker exec -it small_morse bash`
  
 Run one of the hadoop commands (‘put’ here) e.g.
+
 `HADOOP_USER_NAME=hdfs hdfs fs -put /tmp/movies.csv /user/spark/`
 (hdfs is the new name of hadoop command, but hadoop can still be used, e.g.
+
 `HADOOP_USER_NAME=hdfs hadoop fs -put /tmp/movies.csv /user/spark/)`
  
 If it complains about safe mode
+
 `HADOOP_USER_NAME=hdfs hadoop dfsadmin -safemode leave`
  
 Start spark-shell
+
 `HADOOP_USER_NAME=spark spark-shell`
  
 Note: If all the HDFS commands are to be run as the same user then one can simply do
+
 `export HADOOP_USER_NAME=<hdfsusername>`
 once per session (or at login through .bash_profile or /etc/profile or similar)
  
@@ -27,15 +33,18 @@ Or, to start with avro and CSV support
 `HADOOP_USER_NAME=spark spark-shell --packages com.databricks:spark-csv_2.10:1.5.0 com.databricks:spark-avro_2.10:3.2.0`
  
 Commands in spark-shell
+
 `val df = sqlContext.read.format("com.databricks.spark.csv").option("header", "true").option("inferSchema", "true").load("1m-zipuidmidtitlegenre.csv.gz")`
  
 (we assume that the file https://github.com/academyofdata/data/blob/master/1m-zipuidmidtitlegenre.csv.gz has been loaded in HDFS in /user/spark using the put command above)
  
  
 To save the dataframe in Parquet format
+
 `df.saveAsParquetFile("/tmp/ratings.parquet")`
  
 To save it in Avro format
+
 `df.write.format("com.databricks.spark.avro").save("/tmp/ratings.avro")`
  
  

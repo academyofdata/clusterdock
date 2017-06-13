@@ -1,4 +1,4 @@
-##Hadoop Cheatsheet##
+####Hadoop Cheatsheet
  
 When using clusterdock containers, to log in to the container (assuming the container is called ‘small_morse’)
 docker exec -it small_morse bash

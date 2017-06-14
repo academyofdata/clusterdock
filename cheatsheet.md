@@ -23,10 +23,6 @@ When executing various commands (from Hive console or Hue or otherwise) beware o
 (replace the filename to match your intention)
 
  
-Start spark-shell
-
-`HADOOP_USER_NAME=spark spark-shell`
- 
 Note: If all the HDFS commands are to be run as the same user then one can simply do
 
 `export HADOOP_USER_NAME=<hdfsusername>`
@@ -34,6 +30,11 @@ Note: If all the HDFS commands are to be run as the same user then one can simpl
 once per session (or at login through .bash_profile or /etc/profile or similar)
 
 ## Spark
+
+Start 'plain' spark-shell
+
+`HADOOP_USER_NAME=spark spark-shell`
+ 
  
 Start spark-shell with databricks spark-csv jars (csv support is built in only in spark 2.0+, clusterdock uses - as of jun 2017 - spark 1.6)
  

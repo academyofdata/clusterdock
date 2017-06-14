@@ -96,6 +96,8 @@ ROW FORMAT SERDE 'org.apache.hadoop.hive.serde2.OpenCSVSerde'
 WITH SERDEPROPERTIES ( "separatorChar" = "\,", "quoteChar"     = "\"")
 STORED AS TEXTFILE tblproperties("skip.header.line.count"="1");`
 
+*Warning: when using OpenCSVSerde the data type output for all fields will be set to string. Use an intermediary table and the CAST function to load data in the right tables using the right data types*
+
 To create tables based on Avro format use the following 
 
 `create table if not exists users_avro 

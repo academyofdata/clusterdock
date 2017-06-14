@@ -86,3 +86,25 @@ COMMENT 'data loaded with serde org.apache.hadoop.hive.serde2.OpenCSVSerde'
 ROW FORMAT SERDE 'org.apache.hadoop.hive.serde2.OpenCSVSerde'
 WITH SERDEPROPERTIES ( "separatorChar" = "\,", "quoteChar"     = "\"")
 STORED AS TEXTFILE tblproperties("skip.header.line.count"="1");`
+
+To create tables based on Avro format use the following 
+
+`create table if not exists users_avro 
+ROW FORMAT
+SERDE 'org.apache.hadoop.hive.serde2.avro.AvroSerDe'
+STORED AS
+INPUTFORMAT 'org.apache.hadoop.hive.ql.io.avro.AvroContainerInputFormat'
+OUTPUTFORMAT 'org.apache.hadoop.hive.ql.io.avro.AvroContainerOutputFormat'
+TBLPROPERTIES ('avro.schema.literal'='{
+  "namespace": "testing",
+  "name": "users",
+  "type": "record",
+  "fields": [
+    {"name":"uid","type":"int","doc":"user id"},
+    {"name":"gender","type":"string","doc":"user gender"},
+    {"name":"age","type":"int","doc":"user age"},
+    {"name":"ocupation","type":"int","doc:":"id of ocupation"},
+    {"name":"zip","type":"string","doc:":"user address zip code"}
+  ]
+}')
+`

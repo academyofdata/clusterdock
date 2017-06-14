@@ -120,4 +120,5 @@ TBLPROPERTIES ('avro.schema.literal'='{
   ]
 }')
 `
+
 to create the table followed by a `LOAD DATA INPATH` command, as shown above

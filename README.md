@@ -1,6 +1,6 @@
 # clusterdock
 
-To setup a cluster based on clusterdock on a 'fresh' system, simply do
+To setup a cluster based on [clusterdock](https://github.com/cloudera/clusterdock) on a 'fresh' system, simply do
 
 `wget -qO- https://raw.githubusercontent.com/academyofdata/clusterdock/master/cluster_setup.sh|
  bash -s`

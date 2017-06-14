@@ -32,6 +32,8 @@ Note: If all the HDFS commands are to be run as the same user then one can simpl
 `export HADOOP_USER_NAME=<hdfsusername>`
 
 once per session (or at login through .bash_profile or /etc/profile or similar)
+
+## Spark
  
 Start spark-shell with databricks spark-csv jars (csv support is built in only in spark 2.0+, clusterdock uses - as of jun 2017 - spark 1.6)
  

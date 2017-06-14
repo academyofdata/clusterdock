@@ -15,6 +15,13 @@ Run one of the hadoop commands (‘put’ here) e.g.
 If it complains about safe mode
 
 `HADOOP_USER_NAME=hdfs hadoop dfsadmin -safemode leave`
+
+When executing various commands (from Hive console or Hue or otherwise) beware of the file mode and owner. For instance if you do a CREATE TABLE in Hive that requires moving the source file to Hive's data directory and the rights are not the correct ones, you'll get an error. In such cases you can work arround by changing the file access rights with the following command
+
+`HADOOP_USER_NAME=hdfs hdfs dfs -chmod 777 /input/movies.csv`
+
+(replace the filename to match your intention)
+
  
 Start spark-shell
 

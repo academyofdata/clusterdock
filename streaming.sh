@@ -5,7 +5,7 @@ cd /tmp
 #get the python code from git repo
 wget -q https://raw.githubusercontent.com/academyofdata/clusterdock/master/kafka-streaming.py
 #submit the job
-spark-submit --master yarn --deploy-mode client --conf "spark.dynamicAllocation.enabled=false" kafka-streaming.py node-1.cluster:2181 aod
+HADOOP_USER_NAME=hdfs spark-submit --master yarn --deploy-mode client --conf "spark.dynamicAllocation.enabled=false" kafka-streaming.py node-1.cluster:2181 aod
 #start publishing in another window with this command
 #kafka-console-producer --broker-list node-2.cluster:9092 --topic aod
 

@@ -16,7 +16,7 @@ DATA=$(encode 'Some data...')
 echo "We will send TABLE=$TABLE, KEY=$KEY, COLUMN=$COLUMN, DATA=$DATA"
 
 curl -v -X PUT \
-  'http://localhost:20550/test/row1/data:test' \
+  'http://localhost:20550/test/rowxx' \
   -H "Accept: application/json" \
   -H "Content-Type: application/json" \
-  -d "{\"Row\":{\"@key\":\"$KEY\",\"Cell\":{\"@column\":\"$COLUMN\", \"$\":\"$DATA\"}}}"
+  -d '{"Row":[{"key":"$KEY", "Cell": [{"column":"$COLUMN", "$":"$DATA"}]}]}'

@@ -13,6 +13,8 @@ KEY=$(encode 'row1')
 COLUMN=$(encode 'data:test')
 DATA=$(encode 'Some data...')
 
+echo "We will send TABLE=$TABLE, KEY=$KEY, COLUMN=$COLUMN, DATA=$DATA"
+
 curl -v -X PUT \
   'http://localhost:20550/test/row1/data:test' \
   -H "Accept: application/json" \

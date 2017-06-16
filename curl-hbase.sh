@@ -14,7 +14,7 @@ COLUMN=$(encode 'data:test')
 DATA=$(encode 'Some data...')
 
 curl -v -X PUT \
-  'http://localhost:8080/test/row1/data:test' \
+  'http://localhost:20550/test/row1/data:test' \
   -H "Accept: application/json" \
   -H "Content-Type: application/json" \
   -d "{\"Row\":{\"@key\":\"$KEY\",\"Cell\":{\"@column\":\"$COLUMN\", \"$\":\"$DATA\"}}}"

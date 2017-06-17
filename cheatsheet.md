@@ -132,5 +132,5 @@ If you generated an Avro file with Spark (as shown above) and want to get the sc
 
 (we assumed that the generated Avro file is /data/1m/ratings.avro).
 
-At the end of the execution you'll have in /tmp a file called schema.avsc with the desired schema. These files should be uploaded to HDFS (hdfs dfs -put /tmp/schema.avsc /metadata/ratings.avsc) for easy access from Spark, Hive aso
+At the end of the execution you'll have in /tmp a file called schema.avsc with the desired schema. These files should be uploaded to HDFS (e.g. `hdfs dfs -put /tmp/schema.avsc /metadata/ratings.avsc`) for easy access from Spark, Hive aso
 

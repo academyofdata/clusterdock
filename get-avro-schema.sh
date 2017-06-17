@@ -7,3 +7,4 @@ FILE=`hdfs dfs -ls -d $1/*.avro | head -1 | awk '{print $8}'`
 hdfs dfs -cat $FILE | head --bytes 10K > sample.avro
 avro-tools getschema ./sample.avro > schema.avsc
 rm ./sample.avro
+cat ./schema.avsc

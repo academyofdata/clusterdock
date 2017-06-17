@@ -6,12 +6,10 @@ FAMILY1='data'
 FAMILY2='text'
 TABLE='test'
 
-curl -vi -X GET -H "Accept: application/json" "http://localhost:20550/$TABLE/schema"
+curl -vi -X GET -H "Accept: application/json" "http://localhost:20550/table/schema"
 #commands that create an HBase table, using HBase REST server (needs to be enabled/installed if not there)
 #first create a table called 'test' with a CF called 'data'
-curl -v -X PUT 'http://localhost:20550/$TABLE/schema' -H "Accept: application/json" -H "Content-Type: application/json" -d '{"@name":"$TABLE","ColumnSchema":[{"name":"$FAMILY1"},{"name":"$FAMILY2"}]}'
-
-
+curl -v -X PUT 'http://localhost:20550/table/schema' -H "Accept: application/json" -H "Content-Type: application/json" -d '{"@name":"table","ColumnSchema":[{"name":"$FAMILY1"},{"name":"$FAMILY2"}]}'
 
 COL1=$(encode "$FAMILY1:subcol1")
 COL2=$(encode "$FAMILY1:subcol2")

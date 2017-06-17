@@ -21,4 +21,4 @@ HADOOP_USER_NAME=hdfs hdfs dfs -chmod -R a+w /input
 #now put the files in there
 HADOOP_USER_NAME=hdfs hdfs dfs -put /tmp/data/movies.csv /input/movies/movies.csv
 HADOOP_USER_NAME=hdfs hdfs dfs -put /tmp/data/users.csv /input/users/users.csv
-HADOOP_USER_NAME=hdfs hdfs dfs -put /tmp/data/ratings.csv /input/movies/ratings.csv
+HADOOP_USER_NAME=hdfs hdfs dfs -put /tmp/data/ratings.csv /input/ratings/ratings.csv

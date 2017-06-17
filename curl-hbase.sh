@@ -22,7 +22,7 @@ do
   KEY=$(encode "row$iter")
   DATA1=$(encode "value of row$iter")
   DATA2=$(encode "$iter other value")
-  DATA3=`cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 16 | head -n 1`
-  DATA4=`cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 8 | head -n 1`
+  DATA3=$(encode `cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 16 | head -n 1`)
+  DATA4=$(encode `cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 8 | head -n 1`)
   curl -v -X PUT "$HOST/zzz" -H "Accept: application/json" -H "Content-Type: application/json" -d "{\"Row\":[{\"key\":\"$KEY\", \"Cell\": [{\"column\":\"$COL1\", \"$\":\"$DATA1\"},{\"column\":\"$COL2\", \"$\":\"$DATA2\"},{\"column\":\"$COL3\", \"$\":\"$DATA3\"},{\"column\":\"$COL4\", \"$\":\"$DATA4\"}]}]}"
 done

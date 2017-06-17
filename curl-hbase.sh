@@ -9,14 +9,15 @@ curl -v -X PUT 'http://localhost:20550/test/schema' -H "Accept: application/json
 
 TABLE='test'
 FAMILY='data'
-COLUMN=$(encode "$FAMILY:subcol")
-
+COL1=$(encode "$FAMILY:subcol1")
+COL2=$(encode "$FAMILY:subcol2")
 
 echo "We will send TABLE=$TABLE, KEY=$KEY, COLUMN=$COLUMN, DATA=$DATA"
 
 for iter in `seq 100 105`;
 do
   KEY=$(encode "row$iter")
-  DATA=$(encode "value of row$iter")
-  curl -v -X PUT 'http://localhost:20550/test/zzz' -H "Accept: application/json" -H "Content-Type: application/json" -d "{\"Row\":[{\"key\":\"$KEY\", \"Cell\": [{\"column\":\"$COLUMN\", \"$\":\"$DATA\"},{\"column\":\"$COLUMN1\", \"$\":\"s_$DATA\"}]}]}"
+  DATA1=$(encode "value of row$iter")
+  DATA2=$(encode "$iter other value")
+  curl -v -X PUT 'http://localhost:20550/test/zzz' -H "Accept: application/json" -H "Content-Type: application/json" -d "{\"Row\":[{\"key\":\"$KEY\", \"Cell\": [{\"column\":\"$COL1\", \"$\":\"$DATA1\"},{\"column\":\"$COL2\", \"$\":\"$DATA2\"}]}]}"
 done

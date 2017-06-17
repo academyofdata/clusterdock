@@ -9,7 +9,7 @@ curl -v -X PUT 'http://localhost:20550/test/schema' -H "Accept: application/json
 
 TABLE='test'
 FAMILY='data'
-COLUMN=$(encode 'data:test')
+COLUMN=$(encode "$FAMILY:$TABLE")
 
 
 echo "We will send TABLE=$TABLE, KEY=$KEY, COLUMN=$COLUMN, DATA=$DATA"

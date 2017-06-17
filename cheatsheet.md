@@ -123,6 +123,28 @@ TBLPROPERTIES ('avro.schema.literal'='{
 
 to create the table followed by a `LOAD DATA INPATH` command, as shown above
 
+## HBase
+
+In this repository you'll find a script called 'curl-hbase.sh' that uses curl and HBase's REST server (not enabled by default in the clusterdock setup) to generate and load some data in a table called 'ztable', into two column families 'data' and 'text'. Once the script is run, one can start an HBase shell to query the result. The shell is started with the following command
+
+`HADOOP_USER_NAME=hbase hbase shell`
+
+If the shell starts correctly the prompt should say something like `hbase(main):001:0>`, this means that we can see what tables are there and query the data in them. Start with 
+
+`desc 'default:ztable'`
+
+This will get the table definition, that also shows the defined column families and their properties. Further on you can type
+
+`get 'ztable','row111'`
+
+to get the data stored at the key called 'row111', or
+
+`get 'ztable','row111','text:subcol2'`
+
+to get the cell 'text:subcol2' of the said row
+
+
+
 ## Avro
 
 One of the nuissances when working with Avro files is providing the right schema (when creating a table in Hive, for instance) that's why there's a little helper script to help with the schema generation. 

@@ -130,6 +130,7 @@ If you generated an Avro file with Spark (as shown above) and want to get the sc
 
 `wget -O- https://raw.githubusercontent.com/academyofdata/clusterdock/master/get-avro-schema.sh | bash -s "/data/1m/ratings.avro"`
 
-(we assumed that the generated Avro file is /data/1m/ratings.avro)
+(we assumed that the generated Avro file is /data/1m/ratings.avro).
+
 At the end of the execution you'll have in /tmp a file called schema.avsc with the desired schema
 

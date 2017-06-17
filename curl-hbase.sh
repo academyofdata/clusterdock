@@ -17,7 +17,7 @@ COL2=$(encode "$FAMILY1:subcol2")
 COL3=$(encode "$FAMILY2:subcol1")
 COL4=$(encode "$FAMILY2:subcol2")
 
-for iter in `seq 100 200`;
+for iter in {100..200}
 do
   KEY=$(encode "row$iter")
   DATA1=$(encode "value of row$iter")

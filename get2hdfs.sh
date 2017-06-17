@@ -13,7 +13,11 @@ HADOOP_USER_NAME=hdfs hdfs dfs -chmod a+w /data
 HADOOP_USER_NAME=hdfs hdfs dfs -mkdir /metadata
 HADOOP_USER_NAME=hdfs hdfs dfs -chmod a+w /metadata
 HADOOP_USER_NAME=hdfs hdfs dfs -mkdir /input
-HADOOP_USER_NAME=hdfs hdfs dfs -chmod a+w /input
+HADOOP_USER_NAME=hdfs hdfs dfs -mkdir /input/movies
+HADOOP_USER_NAME=hdfs hdfs dfs -mkdir /input/users
+HADOOP_USER_NAME=hdfs hdfs dfs -mkdir /input/ratings
+HADOOP_USER_NAME=hdfs hdfs dfs -chmod -R a+w /input
+
 #now put the files in there
 HADOOP_USER_NAME=hdfs hdfs dfs -put /tmp/data/movies.csv /input/movies/movies.csv
 HADOOP_USER_NAME=hdfs hdfs dfs -put /tmp/data/users.csv /input/users/users.csv

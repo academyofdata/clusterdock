@@ -122,3 +122,14 @@ TBLPROPERTIES ('avro.schema.literal'='{
 `
 
 to create the table followed by a `LOAD DATA INPATH` command, as shown above
+
+## Avro
+
+One of the nuissances when working with Avro files is providing the right schema (when creating a table in Hive, for instance) that's why there's a little helper script to help with the schema generation. 
+If you generated an Avro file with Spark (as shown above) and want to get the schema from it, simply run
+
+`wget -O- https://raw.githubusercontent.com/academyofdata/clusterdock/master/get-avro-schema.sh?ab | bash -s "/data/1m/ratings.avro"`
+
+(we assumed that the generated Avro file is /data/1m/ratings.avro)
+At the end of the execution you'll have in /tmp a file called schema.avsc with the desired schema
+

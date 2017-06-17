@@ -5,8 +5,9 @@ function encode {
 FAMILY1='data'
 FAMILY2='text'
 TABLE='ztable'
+HOST="http://127.0.0.1:20550/$TABLE"
 
-curl -vi -X GET -H "Accept: application/json" "http://127.0.0.1:20550/ztable/schema"
+curl -vi -X GET -H "Accept: application/json" "$HOST/schema"
 #commands that create an HBase table, using HBase REST server (needs to be enabled/installed if not there)
 #first create a table called 'test' with a CF called 'data'
 curl -v -X PUT 'http://127.0.0.1:20550/ztable/schema' -H "Accept: application/json" -H "Content-Type: application/json" -d '{"@name":"ztable","ColumnSchema":[{"name":"$FAMILY1"},{"name":"$FAMILY2"}]}'

@@ -159,6 +159,7 @@ i.e. we tell Hive to create metadata for an external (stored in HBase's territor
 ## Hive to HBase
 
 We could also do the reverse: define a table in Hive and have the data available in/through HBase, would go something like this
+
 `
 CREATE TABLE definhive(value map<string,int>, row_key int) 
 STORED BY 'org.apache.hadoop.hive.hbase.HBaseStorageHandler'
@@ -168,6 +169,7 @@ WITH SERDEPROPERTIES (
 `
 
 we could then do 
+
 `
 insert into definhive select map("aa",100),1;
 insert into definhive select map("aa",200),2;

@@ -6,6 +6,7 @@ sqlContext.setConf("spark.sql.avro.deflate.level", "5")
 sqlContext.setConf("spark.sql.parquet.compression.codec", "snappy")
 
 val ratings = sqlContext.read.format("com.databricks.spark.csv").option("header", "true").option("inferSchema", "true").load("/input/ratings/ratings.csv")
+val ratings_all = sqlContext.read.format("com.databricks.spark.csv").option("header", "true").option("inferSchema", "true").load("/input/ratings-all/ratings-all.csv")
 val movies = sqlContext.read.format("com.databricks.spark.csv").option("header", "true").option("inferSchema", "true").load("/input/movies/movies.csv")
 val users = sqlContext.read.format("com.databricks.spark.csv").option("header", "true").option("inferSchema", "true").load("/input/users/users.csv")
 
@@ -13,6 +14,8 @@ val users = sqlContext.read.format("com.databricks.spark.csv").option("header", 
 //if we want that parquet/avro files are saved in a single partition we do it like this
 ratings.coalesce(1).saveAsParquetFile("/data/1m/ratings.parquet")
 ratings.coalesce(1).write.format("com.databricks.spark.avro").save("/data/1m/ratings.avro")
+ratings.coalesce(1).saveAsParquetFile("/data/1m/ratings-all.parquet")
+ratings.coalesce(1).write.format("com.databricks.spark.avro").save("/data/1m/ratings-all.avro")
 //otherwise we just do
 //ratings.write.format("com.databricks.spark.avro").save("/data/1m/ratings.avro")
 //ratings.saveAsParquetFile("/data/1m/ratings.parquet")

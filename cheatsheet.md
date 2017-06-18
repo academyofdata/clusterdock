@@ -145,7 +145,7 @@ to get the cell 'text:subcol2' of the said row
 
 ## HBase to Hive
 
-What if we want to make available the data from this HBase table, that we just set-up and provisioned with data, in Hive? We could do it using a particular SerDe - org.apache.hadoop.hive.hbase.HBaseStorageHandler. And using it is rather simple we simply do
+What if we want to make available the data from this HBase table, that we just set-up and provisioned with data, in Hive? We could do it using a particular SerDe - org.apache.hadoop.hive.hbase.HBaseStorageHandler. And using it is rather simple we just do
 
 `
 CREATE EXTERNAL TABLE ztable (key string, data map<string,string>, text map<string,string>) 

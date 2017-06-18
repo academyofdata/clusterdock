@@ -55,8 +55,15 @@ insert into table ratings_hbase select * from viewforhbase
 You can now check that everything went fine by dropping to HBase shell and doing, for instance 
 
 `
+count 'ratings_all', INTERVAL=>1
+`
+
+or
+
+`
 get 'ratings_all','104-3850'
 `
+
 which should output something similar with
 
 `
@@ -87,3 +94,11 @@ COLUMN  CELL
  `
  scan 'ratings_all',{ROWPREFIXFILTER=>'104-',COLUMNS=>['rating:rating','rating:datetime']}
  `
+
+If we want to get all the ratings of a specific user, things are a bit more complex, i.e.
+
+`
+import org.apache.hadoop.hbase.filter.CompareFilter
+import org.apache.hadoop.hbase.filter.SubstringComparator
+scan 'ratings_all', {FILTER => org.apache.hadoop.hbase.filter.RowFilter.new(CompareFilter::CompareOp.valueOf('EQUAL'),SubstringComparator.new("-3850"))}
+`

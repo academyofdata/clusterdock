@@ -98,10 +98,8 @@ COLUMN  CELL
 
 If we want to get all the ratings of a specific user, things are a bit more complex, i.e. you need first to import some helper classes into hbase shell and then issue the 'scan' command
 
-`
+```
 import org.apache.hadoop.hbase.filter.CompareFilter
-
 import org.apache.hadoop.hbase.filter.SubstringComparator
-
 scan 'ratings_all', {FILTER => org.apache.hadoop.hbase.filter.RowFilter.new(CompareFilter::CompareOp.valueOf('EQUAL'),SubstringComparator.new("-3850"))}
-`
+```

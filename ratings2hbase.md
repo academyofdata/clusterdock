@@ -73,3 +73,11 @@ COLUMN  CELL
  user:uid timestamp=1497781581729, value=3850
  user:zip timestamp=1497781581729, value=92278
  `
+ 
+ If we want to get all the ratings of a particular movie (of which we must know the id!) we could do
+ 
+ `
+ scan 'ratings_all',{ROWPREFIXFILTER=>'104-'}
+ `
+ 
+ (this gets the ratings for the movie with id 104)

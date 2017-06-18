@@ -15,7 +15,7 @@ Load data from the CSV file (beware of the user that executes the query and the 
 LOAD DATA INPATH  '/tmp/ratings-all.csv' OVERWRITE into table ratings_all_csv;
 `
 
-Now, because we're using OpenCSVSerde all our datatypes are overwritten to string, we need to create a separate table (same structure, different name) in which to load the data with the right types. Doing this also allows us to query the data from Impala, since Hive and Impala share the same metastore
+Now, because we're using OpenCSVSerde all our datatypes are overwritten to string, we need to create a separate table (same structure, different name) in which to load the data with the right types. Doing this also allows us to query the data from Impala, since Hive and Impala share the same metastore (do not forget to do a `invalidate metadata` in Impala to reload the tables created in Hive)
 
 `
 CREATE TABLE ratings_all (uid int, age int, gennder string, ocupation int, zip string, rating double, datetime timestamp, mid int, title string, year int, genres string) 

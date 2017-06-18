@@ -81,3 +81,9 @@ COLUMN  CELL
  `
  
  (this gets the ratings for the movie with id 104)
+ 
+ or, to get only the rating and the timestamp
+ 
+ `
+ scan 'ratings_all',{ROWPREFIXFILTER=>'104-',COLUMNS=>['rating:rating','rating:datetime']}
+ `

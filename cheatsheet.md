@@ -2,11 +2,11 @@
  
 When using clusterdock containers, to log in to the container (assuming the container is called ‘small_morse’)
 
-`docker exec -it small_morse bash`
+```docker exec -it small_morse bash```
  
 Run one of the hadoop commands (‘put’ here) e.g.
 
-`HADOOP_USER_NAME=hdfs hdfs dfs -put /tmp/movies.csv /user/spark/`
+```HADOOP_USER_NAME=hdfs hdfs dfs -put /tmp/movies.csv /user/spark/```
 
 (hdfs is the new name of hadoop command, but hadoop can still be used, e.g.
 

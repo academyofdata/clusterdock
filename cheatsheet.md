@@ -156,6 +156,33 @@ TBLPROPERTIES("hbase.table.name" = "ztable", "hbase.mapred.output.outputtable" =
 
 i.e. we tell Hive to create metadata for an external (stored in HBase's territory) table, with the key being the hbase key (mapping first field to :key), with the second field being a map of string->string where we load the 'data' column family and the last field a map where we load the 'text' column family
 
+## Hive to HBase
+
+We could also do the reverse: define a table in Hive and have the data available in/through HBase, would go something like this
+`
+CREATE TABLE definhive(value map<string,int>, row_key int) 
+STORED BY 'org.apache.hadoop.hive.hbase.HBaseStorageHandler'
+WITH SERDEPROPERTIES (
+"hbase.columns.mapping" = "colfam:,:key"
+)
+`
+
+we could then do 
+`
+insert into definhive select map("aa",100),1;
+insert into definhive select map("aa",200),2;
+insert into definhive select map("bb",100),3;
+`
+
+and if we go to hive and do a 
+
+`list`
+
+we should see the table called 'definhive', and could afterwards do
+
+`scan 'definhive'`
+
+to check that the inserted data is there
 ## Avro
 
 One of the nuissances when working with Avro files is providing the right schema (when creating a table in Hive, for instance) that's why there's a little helper script to help with the schema generation. 

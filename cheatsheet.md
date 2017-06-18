@@ -143,7 +143,18 @@ to get the data stored at the key called 'row111', or
 
 to get the cell 'text:subcol2' of the said row
 
+## HBase to Hive
 
+What if we want to make available the data from this HBase table, that we just set-up and provisioned with data, in Hive? We could do it using a particular SerDe - org.apache.hadoop.hive.hbase.HBaseStorageHandler. And using it is rather simple we simply do
+
+`
+CREATE EXTERNAL TABLE ztable (key string, data map<string,string>, text map<string,string>) 
+STORED BY 'org.apache.hadoop.hive.hbase.HBaseStorageHandler'
+WITH SERDEPROPERTIES ("hbase.columns.mapping" = ":key,data:,text:")
+TBLPROPERTIES("hbase.table.name" = "ztable", "hbase.mapred.output.outputtable" = "ztable");
+`
+
+i.e. we tell Hive to create metadata for an external (stored in HBase's territory) table, with the key being the hbase key (mapping first field to :key), with the second field being a map of string->string where we load the 'data' column family and the last field a map where we load the 'text' column family
 
 ## Avro
 

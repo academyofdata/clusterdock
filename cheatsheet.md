@@ -158,7 +158,7 @@ i.e. we tell Hive to create metadata for an external (stored in HBase's territor
 
 ## Hive to HBase
 
-We could also do the reverse: define a table in Hive and have the data available in/through HBase, would go something like this
+We could also do the reverse: define a table in Hive and have the data available in/through HBase and it would go something like this
 
 `
 CREATE TABLE definhive(value map<string,int>, row_key int) 

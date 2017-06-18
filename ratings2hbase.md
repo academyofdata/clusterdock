@@ -28,3 +28,48 @@ followed by
 insert overwrite table ratings_all select * from ratings_all_csv
 `
 
+let's now create a view onto this data (this allows us not to duplicate - again - the data)
+
+`CREATE VIEW IF NOT EXISTS viewforhbase (rowkey, rating, datetime, user, movie) AS
+SELECT concat_ws('-',concat("",mid),concat("",uid)),rating,datetime,map("uid",uid,"age",age,"zip",zip,"occupation",occupation,"gender",gender),map("mid",mid,"title",title,"year",year,"genres",genres)
+FROM ratings_all;
+`
+
+Note how we concatenated the movie id and user id to generate a string that will be used as HBase row key.
+
+We create now a table with the HBase SerDe
+
+`
+CREATE TABLE IF NOT EXISTS ratings_hbase (rowkey STRING, rating double, datetime timestamp, user map<string,string>, movie map<string,string>)
+STORED BY 'org.apache.hadoop.hive.hbase.HBaseStorageHandler'
+WITH SERDEPROPERTIES ('hbase.columns.mapping' = ':key,rating:rating,rating:datetime,user:,movie:')
+TBLPROPERTIES ('hbase.table.name' = 'ratings_all');
+`
+
+at last we populate the data from the view to HBase
+
+`
+insert into table ratings_hbase select * from viewforhbase
+`
+
+You can now check that everything went fine by dropping to HBase shell and doing, for instance 
+
+`
+get 'ratings_all','104-3850'
+`
+which should output something similar with
+
+`
+COLUMN  CELL
+ movie:genres timestamp=1497781581729, value={Comedy}
+ movie:mid timestamp=1497781581729, value=104
+ movie:title timestamp=1497781581729, value=Happy Gilmore (1996)
+ movie:year timestamp=1497781581729, value=1996
+ rating:datetime timestamp=1497781581729, value=2000-08-10 04:10:29
+ rating:rating timestamp=1497781581729, value=4.0
+ user:age timestamp=1497781581729, value=18
+ user:gender timestamp=1497781581729, value=M
+ user:occupation timestamp=1497781581729, value=3
+ user:uid timestamp=1497781581729, value=3850
+ user:zip timestamp=1497781581729, value=92278
+ `

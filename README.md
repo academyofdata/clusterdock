@@ -42,3 +42,8 @@ followed by
 ```
 gcloud compute ssh cdock --zone us-east4-a --command "wget -O- https://raw.githubusercontent.com/academyofdata/clusterdock/master/getindocker.sh | bash -s"
 ```
+
+
+## Docs 
+
+[Docs](https://drive.google.com/drive/folders/0B3eEcNsQQ8WRSzdaYjYzUnpidTg?usp=sharing])

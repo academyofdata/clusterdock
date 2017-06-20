@@ -133,7 +133,7 @@ WITH SERDEPROPERTIES ( "separatorChar" = "\,", "quoteChar"     = "\"")
 STORED AS TEXTFILE tblproperties("skip.header.line.count"="1");
 ```
 
-*Warning: when using OpenCSVSerde the data type output for all fields will be set to string. Use an intermediary table and the CAST function to load data in the right tables using the right data types*
+*Warning: when using OpenCSVSerde the data type output for all fields will be set to string. Use an intermediary table and the CAST function to load data in the right tables using the right data types (e.g. cast(<column> as int))*
 
 To create tables based on Avro format use the following 
 

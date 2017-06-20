@@ -15,7 +15,7 @@ sudo docker exec -ti \`sudo docker ps | grep clusterdock | grep secondary | head
 Otherwise, one can log in to one of the containers (the secondary node in the example below) with the following command
 
 ```
-sudo docker exec -ti \`sudo docker ps | grep clusterdock | grep secondary | head -1 | awk '{print $1}'\` bash
+sudo docker exec -ti `sudo docker ps | grep clusterdock | grep secondary | head -1 | awk '{print $1}'` bash
 ```
 
 ## Google Cloud Engine usage

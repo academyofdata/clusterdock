@@ -5,7 +5,12 @@ When using clusterdock containers, to log in to the container (assuming the cont
 ```
 docker exec -it small_morse bash
 ```
- 
+
+To log into the primary node created by clusterdock run the following command
+```
+docker exec -ti `docker ps | grep cloudera| grep clusterdock | grep primary | awk '{print $1}'` bash
+```
+
 Run one of the hadoop commands (‘put’ here) e.g.
 
 ```

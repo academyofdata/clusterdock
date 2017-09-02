@@ -6,3 +6,4 @@ sudo apt-get update && sudo apt-get install -y docker.io
 source /dev/stdin <<< "$(curl -sL http://tiny.cloudera.com/clusterdock.sh)"
 #now everything is prepared to start the cluster
 clusterdock_run ./bin/start_cluster cdh
+echo `date` > /tmp/clusterdock.txt

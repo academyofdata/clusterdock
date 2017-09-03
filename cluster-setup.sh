@@ -1,5 +1,5 @@
 #!/bin/bash
-# we assume that this script runs on a freshly installed system
+# we assume that this script runs on a freshly installed Ubuntu/Debian system
 DEBIAN_FRONTEND=noninteractive
 #so we first install docker
 sudo apt-get update && sudo apt-get install -y docker.io

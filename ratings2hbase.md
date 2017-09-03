@@ -9,11 +9,22 @@ WITH SERDEPROPERTIES ( "separatorChar" = "\,", "quoteChar" = "\"")
 STORED AS TEXTFILE tblproperties("skip.header.line.count"="1");
 ```
 
-Load data from the CSV file (beware of the user that executes the query and the mode/rights on the file!)
+Load data from the CSV file (beware of the user that executes the query and the mode/rights on the file!, **THIS WILL MOVE THE ORIGINAL FILE!**)
 
 ```
 LOAD DATA INPATH  '/tmp/ratings-all.csv' OVERWRITE into table ratings_all_csv;
 ```
+
+Alternatively, to define the table from an existing csv file do (**NOTE THIS will just link to the csv file **)
+
+```
+CREATE EXTERNAL TABLE ratings_all_hive 
+(userid INT, age INT, gender STRING, occupation INT,zip STRING,rating INT, rating_time INT,movieid INT, title STRING, year INT, genre STRING) 
+ROW FORMAT SERDE 'org.apache.hadoop.hive.serde2.OpenCSVSerde' WITH SERDEPROPERTIES ( "separatorChar" = "\,", "quoteChar" = "\"")
+STORED AS TEXTFILE LOCATION "/input/ratings-all" tblproperties("skip.header.line.count"="1")
+```
+This way you won't need to run the ```LOAD DATA```
+
 
 Now, because we're using OpenCSVSerde, all our datatypes are overwritten to string, we need to create a separate table (same structure, different name) in which to load the data with the right types. Doing this also allows us to query the data from Impala, since Hive and Impala share the same metastore (do not forget to do a `invalidate metadata` in Impala to reload the tables created in Hive)
 

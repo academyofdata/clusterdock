@@ -53,7 +53,7 @@ at last we populate the data from the view to HBase
 insert into table ratings_hbase select * from viewforhbase
 ```
 
-You can now check that everything went fine by dropping to HBase shell [see here how to do that](https://github.com/academyofdata/clusterdock/blob/master/cheatsheet.md#hbase) and doing, for instance 
+You can now check that everything went fine by dropping to HBase shell ([see here how to do that](https://github.com/academyofdata/clusterdock/blob/master/cheatsheet.md#hbase)) and doing, for instance 
 
 ```
 count 'ratings_all', INTERVAL=>1

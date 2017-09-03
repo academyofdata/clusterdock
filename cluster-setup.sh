@@ -1,5 +1,6 @@
 #!/bin/bash
 # we assume that this script runs on a freshly installed system
+DEBIAN_FRONTEND=noninteractive
 #so we first install docker
 sudo apt-get update && sudo apt-get install -y docker.io
 #then we source the clusterdock prerequisites, see https://blog.cloudera.com/blog/2016/08/multi-node-clusters-with-cloudera-quickstart-for-docker/

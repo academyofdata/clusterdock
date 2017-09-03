@@ -110,6 +110,8 @@ COLUMN  CELL
  user:zip timestamp=1497781581729, value=92278
  ```
  
+ (you can compare the performance of this query with this one ```select * from ratings_hbase where rowkey='104-3850'``` which semantically does the exact same thing )
+ 
  If we want to get all the ratings of a particular movie (of which we must know the id!) we could do
  
  ```

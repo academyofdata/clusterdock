@@ -36,6 +36,11 @@ CREATE VIEW IF NOT EXISTS viewforhbase (rowkey, rating, datetime, user, movie) A
     FROM ratings_all;
 ```
 
+check how the data looks by issuing the following command
+```
+select * from viewforhbase limit 5
+```
+
 Note how we concatenated the movie id and user id to generate a string that will be used as HBase row key.
 
 We create now a table with the HBase SerDe

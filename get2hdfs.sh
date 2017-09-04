@@ -1,3 +1,4 @@
+#this needs to be run in one of the clusterdock containers
 #for some reason not always the name resolution is good in these containers, 
 #so add the google DNS before running this, just in case
 #echo "nameserver 8.8.8.8" >> /etc/resolv.conf
@@ -30,3 +31,5 @@ HADOOP_USER_NAME=hdfs hdfs dfs -put /tmp/data/ratings-all.csv /input/ratings-all
 
 HADOOP_USER_NAME=hdfs hdfs dfs -chmod -R a+w /input
 
+
+wget -qO- https://raw.githubusercontent.com/academyofdata/clusterdock/master/gen-avro-parquet.sh | bash -s

@@ -1,10 +1,11 @@
-#for some reason not always the name resolution is good in these containers, so add the google DNS before running this, just in case
+#for some reason not always the name resolution is good in these containers, 
+#so add the google DNS before running this, just in case
 #echo "nameserver 8.8.8.8" >> /etc/resolv.conf
 #make a temporary directory to store the downloaded csv files
 mkdir /tmp/data
 #go there
 cd /tmp/data
-#run the script that will download all the csv files
+#run the script that will download and unarchive all the csv files
 wget -qO- https://raw.githubusercontent.com/academyofdata/clusterdock/master/getrawdata.sh | bash -s
 #if everything went fine we should have some csv files in /tmp/data, put them onto hdfs
 #first do a little setup - create a few directories and give everyone in HDFS unrestricted access
@@ -14,12 +15,15 @@ HADOOP_USER_NAME=hdfs hdfs dfs -mkdir /metadata
 HADOOP_USER_NAME=hdfs hdfs dfs -chmod a+w /metadata
 HADOOP_USER_NAME=hdfs hdfs dfs -mkdir /input
 HADOOP_USER_NAME=hdfs hdfs dfs -mkdir /input/movies
+HADOOP_USER_NAME=hdfs hdfs dfs -mkdir /input/movies_internal_hive
 HADOOP_USER_NAME=hdfs hdfs dfs -mkdir /input/users
 HADOOP_USER_NAME=hdfs hdfs dfs -mkdir /input/ratings
 HADOOP_USER_NAME=hdfs hdfs dfs -mkdir /input/ratings-all
 
+
 #now put the files in there
 HADOOP_USER_NAME=hdfs hdfs dfs -put /tmp/data/movies.csv /input/movies/movies.csv
+HADOOP_USER_NAME=hdfs hdfs dfs -put /tmp/data/movies.csv /input/movies_internal_hive/movies.csv
 HADOOP_USER_NAME=hdfs hdfs dfs -put /tmp/data/users.csv /input/users/users.csv
 HADOOP_USER_NAME=hdfs hdfs dfs -put /tmp/data/ratings.csv /input/ratings/ratings.csv
 HADOOP_USER_NAME=hdfs hdfs dfs -put /tmp/data/ratings-all.csv /input/ratings-all/ratings-all.csv

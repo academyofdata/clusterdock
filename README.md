@@ -19,6 +19,15 @@ Otherwise, one can log in to one of the containers (the secondary node in the ex
 sudo docker exec -ti `sudo docker ps | grep clusterdock | grep secondary | head -1 | awk '{print $1}'` bash
 ```
 
+## (Re)starting containers
+
+If you followed the steps above to start a two node cluster and for whatever reason the containers have stopped and need to be restarted, simply issue the following command
+
+```
+sudo docker ps -a | grep cloudera | grep node | grep cdh | awk '{print $1}' | xargs sudo docker start
+```
+
+
 ## Google Cloud Engine usage
 
 Should you wish to start a sandbox environment onto GCE please take note of the resource requirements. With the default services enabled by clusterdock, the minimum machine instance is n1-standard-4 (which comes with 15 GB RAM) - anything with less RAM will not succcessfully create the cluster

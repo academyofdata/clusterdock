@@ -27,7 +27,7 @@ If you followed the steps above to start a two node cluster and for whatever rea
 sudo docker ps -a | grep cloudera | grep node | grep cdh | awk '{print $1}' | xargs sudo docker start
 ```
 
-**NOTE: in the standard setup, when restarting the containers, HBase server tends to not start - that is most of the times due to an overcommitment of the heap memory on the Region Server. If you see that the status of HBase in the CM console is red, go to HBase/Configuration and look for the parameter called "Java Heap Size of HBase RegionServer in Bytes". It is probably set to something like 10GB which, for these small sandboxes is an overkill. Set it to 1GB, save the config and restart (or just start) HBase
+**NOTE: in the standard setup, when restarting the containers, HBase server tends to not start - that is most of the times due to an overcommitment of the heap memory on the Region Server. If you see that the status of HBase in the CM console is red, go to HBase/Configuration and look for the parameter called "Java Heap Size of HBase RegionServer in Bytes". It is probably set to something like 10GB which, for these small sandboxes is an overkill. Set it to 1GB, save the config and restart (or just start) HBase**
 
 
 

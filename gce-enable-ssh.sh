@@ -1,6 +1,6 @@
 #this script enables ssh password login on a newly created GCE machine (they default allow only key logins)
-# run it like this (INSTANCE and ZONE represent your instance name and ZONE)
-# gcloud compute ssh ${INSTANCE} --zone ${ZONE} --command "wget -qO- https://raw.githubusercontent.com/academyofdata/clusterdock/master/cluster-setup.sh | bash -s"
+# run it like this (INSTANCE and ZONE represent your instance name and ZONE), hduser is the newly added user
+# gcloud compute ssh ${INSTANCE} --zone ${ZONE} --command "wget -qO- https://raw.githubusercontent.com/academyofdata/clusterdock/master/cluster-setup.sh | bash -s hduser"
 
 
 echo "enabling Password Login"

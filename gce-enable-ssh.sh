@@ -12,7 +12,7 @@ sudo /etc/init.d/ssh reload
 echo "adding user '$1'"
 sudo adduser $1 --gecos "First Last,RoomNumber,WorkPhone,HomePhone" --disabled-password
 
-PASSWD=`openssl rand -base64 8`
+PASSWD=`cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 12 | head -n 1`
 echo "setting user password to: $PASSWD"
 echo "$1:$PASSWD" | sudo chpasswd
 

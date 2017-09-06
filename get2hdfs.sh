@@ -24,6 +24,7 @@ HADOOP_USER_NAME=hdfs hdfs dfs -mkdir /input/ratings-all
 
 #now put the files in there
 HADOOP_USER_NAME=hdfs hdfs dfs -put /tmp/data/movies.csv /input/movies/movies.csv
+HADOOP_USER_NAME=hdfs hdfs dfs -put /tmp/data/movies_updates.csv /tmp/movies_updates.csv
 HADOOP_USER_NAME=hdfs hdfs dfs -put /tmp/data/movies.csv /input/movies_internal_hive/movies.csv
 HADOOP_USER_NAME=hdfs hdfs dfs -put /tmp/data/users.csv /input/users/users.csv
 HADOOP_USER_NAME=hdfs hdfs dfs -put /tmp/data/ratings.csv /input/ratings/ratings.csv

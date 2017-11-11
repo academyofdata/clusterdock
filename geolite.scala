@@ -1,6 +1,6 @@
-/*
-steps to enhance a geolite csv from CIDR format to include also start IP and end IP as longs
-*/
+
+//steps to enhance a geolite csv from CIDR format to include also start IP and end IP as longs
+
 
 import org.apache.spark.sql.functions._
 import org.apache.spark.sql.types.IntegerType

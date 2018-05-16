@@ -14,23 +14,23 @@ HADOOP_USER_NAME=hdfs hdfs dfs -mkdir /data
 HADOOP_USER_NAME=hdfs hdfs dfs -chmod a+w /data
 HADOOP_USER_NAME=hdfs hdfs dfs -mkdir /metadata
 HADOOP_USER_NAME=hdfs hdfs dfs -chmod a+w /metadata
-HADOOP_USER_NAME=hdfs hdfs dfs -mkdir /input
-HADOOP_USER_NAME=hdfs hdfs dfs -mkdir /input/movies
-HADOOP_USER_NAME=hdfs hdfs dfs -mkdir /input/movies_internal_hive
-HADOOP_USER_NAME=hdfs hdfs dfs -mkdir /input/users
-HADOOP_USER_NAME=hdfs hdfs dfs -mkdir /input/ratings
-HADOOP_USER_NAME=hdfs hdfs dfs -mkdir /input/ratings-all
+HADOOP_USER_NAME=hdfs hdfs dfs -mkdir /data
+HADOOP_USER_NAME=hdfs hdfs dfs -mkdir /data/movies
+HADOOP_USER_NAME=hdfs hdfs dfs -mkdir /data/movies_internal_hive
+HADOOP_USER_NAME=hdfs hdfs dfs -mkdir /data/users
+HADOOP_USER_NAME=hdfs hdfs dfs -mkdir /data/ratings
+HADOOP_USER_NAME=hdfs hdfs dfs -mkdir /data/ratings-all
 
 
 #now put the files in there
-HADOOP_USER_NAME=hdfs hdfs dfs -put /tmp/data/movies.csv /input/movies/movies.csv
+HADOOP_USER_NAME=hdfs hdfs dfs -put /tmp/data/movies.csv /data/movies/movies.csv
 HADOOP_USER_NAME=hdfs hdfs dfs -put /tmp/data/movies_updates.csv /tmp/movies_updates.csv
-HADOOP_USER_NAME=hdfs hdfs dfs -put /tmp/data/movies.csv /input/movies_internal_hive/movies.csv
-HADOOP_USER_NAME=hdfs hdfs dfs -put /tmp/data/users.csv /input/users/users.csv
-HADOOP_USER_NAME=hdfs hdfs dfs -put /tmp/data/ratings.csv /input/ratings/ratings.csv
-HADOOP_USER_NAME=hdfs hdfs dfs -put /tmp/data/ratings-all.csv /input/ratings-all/ratings-all.csv
+HADOOP_USER_NAME=hdfs hdfs dfs -put /tmp/data/movies.csv /data/movies_internal_hive/movies.csv
+HADOOP_USER_NAME=hdfs hdfs dfs -put /tmp/data/users.csv /data/users/users.csv
+HADOOP_USER_NAME=hdfs hdfs dfs -put /tmp/data/ratings.csv /data/ratings/ratings.csv
+HADOOP_USER_NAME=hdfs hdfs dfs -put /tmp/data/ratings-all.csv /data/ratings-all/ratings-all.csv
 
-HADOOP_USER_NAME=hdfs hdfs dfs -chmod -R a+w /input
+HADOOP_USER_NAME=hdfs hdfs dfs -chmod -R a+w /data
 
 
 wget -qO- https://raw.githubusercontent.com/academyofdata/clusterdock/master/gen-avro-parquet.sh | bash -s

@@ -14,7 +14,6 @@ HADOOP_USER_NAME=hdfs hdfs dfs -mkdir /data
 HADOOP_USER_NAME=hdfs hdfs dfs -chmod a+w /data
 HADOOP_USER_NAME=hdfs hdfs dfs -mkdir /metadata
 HADOOP_USER_NAME=hdfs hdfs dfs -chmod a+w /metadata
-HADOOP_USER_NAME=hdfs hdfs dfs -mkdir /data
 HADOOP_USER_NAME=hdfs hdfs dfs -mkdir /data/movies
 HADOOP_USER_NAME=hdfs hdfs dfs -mkdir /data/movies_internal_hive
 HADOOP_USER_NAME=hdfs hdfs dfs -mkdir /data/users

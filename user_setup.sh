@@ -34,6 +34,7 @@ users=$(cat $1)
 for i in $users
 do
         echo "processing $i"
-        HADOOP_USER_NAME=hdfs hdfs dfs -mkdir /data/$i
-        HADOOP_USER_NAME=hdfs hdfs dfs -cp  {$rootDir}/* /data/$i
+        ${baseCmd} -mkdir /data/$i
+        ${baseCmd} -cp  {$rootDir}/* /data/$i
+        ${baseCmd} -chmod -R a+w /data/$i
 done
